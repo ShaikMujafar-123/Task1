@@ -44,6 +44,12 @@ const Create = () => {
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
+
+  // const hanldeLogin = () => {
+  //   const username = values.username
+  //   localStorage.setItem(username,values)
+  //   console.log("LOcal stoarge")
+  // }
   
   return (
     <div className="app">
@@ -54,7 +60,7 @@ const Create = () => {
           name="username"
           type="text"
           placeholder="Username"
-          errorMessage="Username should be a combination of letters and digits of 3 to 16 characters"
+          errorMessage="Username should be a combination  of letters and digits of 3 to 16 characters"
           label="Username"
           pattern="^[A-Za-z]{3,16}$"
           required={true}
@@ -72,9 +78,10 @@ const Create = () => {
           required={true}
           value={values.password}
           onChange={onChange}
+          
         />
 
-        <button className="btn" type="submit">Login</button>
+        <button className="btn" type="submit" >Login</button>
         <p className="Login-btn" onClick={() => navigate("/login")}>Don't have an Account? Register Here</p>
       </form>
     </div>

@@ -45,19 +45,24 @@ function Shoppingprod() {
   
   {
     console.log(order)
-    let sortedProducts = [...prodlist];
+    let sortedprodlist = [...prodlist];
+    let sortedProducts = [...products];
 
     if (order === "lowToHigh") 
     {
+      sortedprodlist.sort((a, b) => a.price - b.price);
       sortedProducts.sort((a, b) => a.price - b.price);
     } 
     else if (order === "highToLow") 
     {
-      sortedProducts.sort((a, b) => b.price - a.price);
+      sortedprodlist.sort((a, b) => a.price - b.price);
+      sortedProducts.sort((a, b) => a.price - b.price);
     }
 
     setProductList(sortedProducts);
+    updateProducts(sortedprodlist)
   }
+  
 
   
 
@@ -82,6 +87,11 @@ function Shoppingprod() {
       <div onClick={() => handleProduct()}>Add new Product...</div>
       </div>
       <div className="product-list">
+
+      {products.map((p) => (
+          <Shoppingprod1 {...p} key={p.id} />
+          
+        ))}
       
         {prodlist.map((p) => (
           <Shoppingprod1 {...p} key={p.id} />
