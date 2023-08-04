@@ -1,49 +1,28 @@
-
+import logo from './logo.svg';
 import './App.css';
-import React, { useState } from 'react';
-
-
-import { BrowserRouter,Routes,Route, Link} from 'react-router-dom';
-import Create from './components/Create';
-
-
-import Shoppingprod from './components/Shoppingprod'
-
-
-import Login from './components/Login'
-import NewProduct from './components/NewProduct';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './components/Pages/auth/Login';
+import Homepage from './components/Pages/home/Homepage';
+import Addproductpage from './components/Pages/addproduct/Addproductpage.jsx'
+import { AuthProvider } from './components/Pages/auth/auth';
+import { RequireAuth } from './components/Pages/auth/RequireAuth';
 
 
 
 function App() {
   return (
-    
-    <div className="navbar">
-      
-    <BrowserRouter>
-    <Routes>
-  
-      <Route path="/" element={<Create/>} />
-    <Route path = "/login" element = {<Login/>} />
-    <Route path = "/newproduct" element = {<NewProduct/>} />
-
-    <Route path = "/shoppingprod" element = {<Shoppingprod/>} />
-
-    
-    
-
-    </Routes>
-    </BrowserRouter>
-
-    
-
-    
-  </div>
-  )
+    <AuthProvider>
+    <Router>
+      <Routes>
+      <Route path="/" element={<Login />} />
+        <Route path="/home" element={<RequireAuth><Homepage /></RequireAuth>} />
+        <Route path="/addproductpage" element={<RequireAuth><Addproductpage /></RequireAuth>} />
+        
+        {/* Other routes */}
+      </Routes>
+    </Router>
+    </AuthProvider>
+  );
 }
- 
+
 export default App;
-
-
-
-

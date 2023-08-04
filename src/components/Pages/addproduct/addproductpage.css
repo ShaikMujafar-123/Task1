@@ -1,0 +1,44 @@
+input
+{
+
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    
+}
+.formInput{
+    display: flex;
+    flex-direction: column;
+    
+    width: 280px;
+}
+.add-product {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn{
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border: none;
+    background-color: rgb(9, 124, 255);
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    font-style: 18px;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 30px;
+  }
+
+
+
+  
+
+  
+
+  
+  
+  
