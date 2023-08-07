@@ -1,16 +1,13 @@
 input
 {
-
     padding: 15px;
     margin: 10px;
     border-radius: 5px;
     border: 1px solid gray;
-    
 }
 .formInput{
     display: flex;
     flex-direction: column;
-    
     width: 280px;
 }
 .add-product {

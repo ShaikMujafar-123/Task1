@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addItem } from "../../Redux/slices/Addproductslice";
-import FormInput from "../../Forminput/FormInput";
-import Home from "../../Home/Home";
-import Header from "../../Common/Header";
-import './addproductpage.css'
+import FormInput from "../../components/Forminput/FormInput";
+import Home from "../../components/Carts/Home";
+import Header from "../../components/Header/Header";
+import "./addproductpage.css";
 
 const NewProduct = () => {
+  // Access the Redux state using the useSelector hook
   const items = useSelector((state) => state.Product);
+  // Access the dispatch function to send actions to the Redux store
   const dispatch = useDispatch();
 
   const [newproduct, setNewProduct] = useState({
@@ -19,7 +21,7 @@ const NewProduct = () => {
   });
 
   // Create a state to hold the list of products
-  const [productList, setProductList] = useState([]);
+  const [productList, setProductList] = useState([...items]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,7 +38,7 @@ const NewProduct = () => {
       description: "",
     });
   };
-
+  // Function to handle input changes and update the newproduct state
   const onChange = (e) => {
     setNewProduct({ ...newproduct, [e.target.name]: e.target.value });
   };
@@ -48,6 +50,8 @@ const NewProduct = () => {
       <div className="add-product">
         <form onSubmit={handleSubmit}>
           <h1>Add a Product</h1>
+          {/* Render FormInput components for various product attributes */}
+          {/* Each FormInput component captures and updates the relevant part of the newproduct state */}
 
           <FormInput
             name="id"
@@ -62,7 +66,7 @@ const NewProduct = () => {
           <FormInput
             name="image"
             type="text"
-            placeholder="image"
+            placeholder="image url"
             label="image"
             required={true}
             value={newproduct.image}
@@ -104,6 +108,7 @@ const NewProduct = () => {
         </form>
       </div>
       <div className="product-list">
+        {/* Map through the productList and render Home components for each product */}
         {productList.map((p) => (
           <Home {...p} key={p.id} />
         ))}
